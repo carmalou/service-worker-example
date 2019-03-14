@@ -24,6 +24,8 @@ The activate event is fired after the service worker is installed and ready to g
 
 This is where our service worker really shines. When a fetch request is made, our service worker will intercept it using a function aptly named `fetch`. Your service worker can look for a similar fetch request from our cache, or send the request onward.
 
+The interesting thing about the service worker lifecycle is that activate and fetch don't necessarily run back-to-back. Fetch will only run when there is a fetch event to intercept, so it could be some time between the activate event and a fetch event. During that time the service worker is idle.
+
 Now that we have a solid understanding of the service worker lifecycle, let's take a look at a sample.
 
 # Sample service worker
@@ -67,5 +69,27 @@ self.onactivate = function(event) {
 ```
 
 This can be a good place for clean up, but we'll save that for another blog post.
+
+We saved the best for last! Let's take a look at fetch.
+
+```
+self.onfetch = function(event) {
+    event.respondWith(
+        caches.match(event.request)
+        .then(function(cachedFiles) {
+            if(cachedFiles) {
+                return cachedFiles;
+            } else {
+                return fetch(event.request);
+            }
+        })
+    );
+}
+```
+
+This function will run when the service worker detects a fetch request. This function in _all_ caches attempting to find a matching request. If a matching request is found, the function returns that request. Otherwise the service worker will go ahead and go over the network with the request.
+
+Let's take a closer look at `event.respondWith` and `caches.match`, both of which are pretty service worker specific.
+
 
 # Next steps
