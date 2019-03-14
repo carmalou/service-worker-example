@@ -91,5 +91,8 @@ This function will run when the service worker detects a fetch request. This fun
 
 Let's take a closer look at `event.respondWith` and `caches.match`, both of which are pretty service worker specific.
 
+[`event.respondWith`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) is a function which allows you to intercept a fetch request and give your own response instead.
+
+
 
 # Next steps
