@@ -48,13 +48,24 @@ Now we'll have a separate file for our service worker
 self.oninstall = function() {
     caches.open('fayeFrontEndV1').then(function(cache) {
         cache.addAll([ / ... / ])
-        .then( / ... / )
         .catch( / ... / );
     })
     .catch( / ... /)
 }
 ```
 
-This is the function that runs when our service worker installs.
+This is the function that runs when our service worker installs. First, we initialize and open a cache. This is a specific place where the files will be stored on the user's machine.
+
+`caches.open` returns a promise with a reference to the cache we opens. Then we use `addAll` to pass in an array of strings. These are file paths, and they are added to the cache we created. Lastly we'll add a few `catch` functions for any error handling we need.
+
+Next step is activate:
+
+```
+self.onactivate = function(event) {
+    console.log('sw is up and running!');
+}
+```
+
+This can be a good place for clean up, but we'll save that for another blog post.
 
 # Next steps
