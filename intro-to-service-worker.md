@@ -104,3 +104,5 @@ Let's take a closer look at `event.respondWith` and `caches.match`, both of whic
 [`caches.match`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/match) is a function that allows us to search through [CacheStorage](link) and find a match for our request. When we add something to our cache, it'll be stored in a stack, with the oldest additions at the bottom and the newest at the top. `caches.match` will find the newest match and return that. If it doesn't find a match at all, it'll return `null`.
 
 And that's it! That's everything you need for a simple starter service worker! If you think service workers are super cool, I'd recommend seeing what else they can do, including background fetch, [in this blog post.](https://davidwalsh.name/background-sync)
+
+_If you want to learn more about service workers, I hope you'll head over to serviceworkerbook.com and sign up for my mailing list, and follow me on Twitter! You'll be the first to know when my book, 'Let's Take This Offline' is out!_
