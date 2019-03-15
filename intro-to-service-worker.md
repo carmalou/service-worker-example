@@ -1,12 +1,12 @@
-# What is a service worker
+## What is a service worker
 
-A service worker is a little file that will allow you to cache files and other assets on a user's machine. How is this different from server-side caching? Because the assets are stored on a user's machine, rather than a server, there is no need to go across a network. This offers a lot of gains for your app's reliability in terms of reliability and speed. Since the app is being served from a cache, there's no need to go over the network which can take up a lot of time. Additionally, this is great for user's with spotty internet connections.
+A service worker is a little file that will allow you to cache files and other assets on a user's machine. How is this different from server-side caching? Because the assets are stored on a user's machine, rather than a server, there is no need to go across a network. This offers a lot of gains for your app's reliability and speed. Since the app is being served from a cache, there's no need to go over the network which can take up a lot of time.
 
-# Why this will help your app
+## Why this will help your app
 
 Adding a service worker will not only help increase the speed of your app, it'll offer a reliability that your users haven't seen before. By removing the immediate need for internet access, we can help anyone with a spotty internet connection -- and really _everyone_ has a spotty internet connection.
 
-# Lifecycle
+## Lifecycle
 
 The service worker lifecycle looks a bit like this:
 
@@ -32,14 +32,15 @@ The interesting thing about the service worker lifecycle is that activate and fe
 
 Now that we have a solid understanding of the service worker lifecycle, let's take a look at a sample.
 
-# Sample service worker
+## Sample service worker
 
-For this example, let's use [FayePI](link). This is a little API I wrote to help women learn to build dynamic websites, and the documentation page uses a very simple service worker.
+For this example, let's use [FayePI](https://github.com/carmalou/fayePI). This is a little API I wrote to help women learn to build dynamic websites, and the documentation page uses a very simple service worker.
 
 Before a service worker can ever be installed, we have to add a registration function to our app's code.
 
 ```
-// index.js
+// [index.js](link)
+
 if(navigator.serviceWorker) {
       navigator.serviceWorker.register('serviceworker.js');
 }
@@ -50,7 +51,8 @@ That will usually go in your `index.js` file to be fired when the page is loaded
 Now we'll have a separate file for our service worker
 
 ```
-// serviceworker.js
+// [serviceworker.js](link)
+
 self.oninstall = function() {
     caches.open('fayeFrontEndV1').then(function(cache) {
         cache.addAll([ / ... / ])
@@ -67,6 +69,8 @@ This is the function that runs when our service worker installs. First, we initi
 Next step is activate:
 
 ```
+// [serviceworker.js](link)
+
 self.onactivate = function(event) {
     console.log('sw is up and running!');
 }
@@ -77,6 +81,8 @@ This can be a good place for clean up, but we'll save that for another blog post
 We saved the best for last! Let's take a look at fetch.
 
 ```
+// [serviceworker.js](link)
+
 self.onfetch = function(event) {
     event.respondWith(
         caches.match(event.request)
