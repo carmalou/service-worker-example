@@ -4,7 +4,7 @@ A service worker is a little file that will allow you to cache files and other a
 
 # Why this will help your app
 
-
+Adding a service worker will not only help increase the speed of your app, it'll offer a reliability that your user's haven't seen before. By removing the immediate need for internet access, we can help anyone with a spotty internet connection -- and really _everyone_ has a spotty internet connection.
 
 # Lifecycle
 
