@@ -39,7 +39,7 @@ For this example, let's use [FayePI](https://github.com/carmalou/fayePI). This i
 Before a service worker can ever be installed, we have to add a registration function to our app's code.
 
 ```
-// [index.js](https://github.com/carmalou/fayePI/blob/master/public/index.html#L222)
+// index.js
 
 if(navigator.serviceWorker) {
       navigator.serviceWorker.register('serviceworker.js');
@@ -51,7 +51,7 @@ That will usually go in your `index.js` file to be fired when the page is loaded
 Now we'll have a separate file for our service worker
 
 ```
-// [serviceworker.js](https://github.com/carmalou/fayePI/blob/master/public/serviceworker.js#L1)
+// serviceworker.js
 
 self.oninstall = function() {
     caches.open('fayeFrontEndV1').then(function(cache) {
@@ -69,8 +69,7 @@ This is the function that runs when our service worker installs. First, we initi
 Next step is activate:
 
 ```
-// [serviceworker.js](https://github.com/carmalou/fayePI/blob/master/public/serviceworker.js#L24)
-
+// serviceworker.js
 self.onactivate = function(event) {
     console.log('sw is up and running!');
 }
@@ -81,8 +80,7 @@ This can be a good place for clean up, but we'll save that for another blog post
 We saved the best for last! Let's take a look at fetch.
 
 ```
-// [serviceworker.js](https://github.com/carmalou/fayePI/blob/master/public/serviceworker.js#L28)
-
+// serviceworker.js
 self.onfetch = function(event) {
     event.respondWith(
         caches.match(event.request)
