@@ -50,7 +50,7 @@ if(navigator.serviceWorker) {
 
 That will usually go in your `index.js` file to be fired when the page is loaded. That's the only reference to your service worker in your app-specific code.
 
-Now we'll have a separate file for our service worker
+Now we'll have a separate file for our service worker.
 
 ```
 // serviceworker.js
