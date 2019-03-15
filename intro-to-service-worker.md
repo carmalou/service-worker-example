@@ -4,7 +4,7 @@ A service worker is a little file that will allow you to cache files and other a
 
 # Why this will help your app
 
-Adding a service worker will not only help increase the speed of your app, it'll offer a reliability that your user's haven't seen before. By removing the immediate need for internet access, we can help anyone with a spotty internet connection -- and really _everyone_ has a spotty internet connection.
+Adding a service worker will not only help increase the speed of your app, it'll offer a reliability that your users haven't seen before. By removing the immediate need for internet access, we can help anyone with a spotty internet connection -- and really _everyone_ has a spotty internet connection.
 
 # Lifecycle
 
@@ -99,4 +99,4 @@ Let's take a closer look at `event.respondWith` and `caches.match`, both of whic
 
 [`caches.match`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/match) is a function that allows us to search through [CacheStorage](link) and find a match for our request. When we add something to our cache, it'll be stored in a stack, with the oldest additions at the bottom and the newest at the top. `caches.match` will find the newest match and return that. If it doesn't find a match at all, it'll return `null`.
 
-# Next steps
+And that's it! That's everything you need for a simple starter service worker! If you think service workers are super cool, I'd recommend seeing what else they can do, including background fetch, [in this blog post.](link)
