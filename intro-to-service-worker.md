@@ -1,6 +1,10 @@
 # What is a service worker
 
+A service worker is a little file that will allow you to cache files and other assets on a user's machine. How is this different from server-side caching? Because the assets are stored on a user's machine, rather than a server, there is no need to go across a network. This offers a lot of gains for your app's reliability in terms of reliability and speed. Since the app is being served from a cache, there's no need to go over the network which can take up a lot of time. Additionally, this is great for user's with spotty internet connections.
+
 # Why this will help your app
+
+
 
 # Lifecycle
 
