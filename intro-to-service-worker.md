@@ -39,7 +39,7 @@ For this example, let's use [FayePI](https://github.com/carmalou/fayePI). This i
 Before a service worker can ever be installed, we have to add a registration function to our app's code.
 
 ```
-// [index.js](link)
+// [index.js](https://github.com/carmalou/fayePI/blob/master/public/index.html#L222)
 
 if(navigator.serviceWorker) {
       navigator.serviceWorker.register('serviceworker.js');
@@ -51,7 +51,7 @@ That will usually go in your `index.js` file to be fired when the page is loaded
 Now we'll have a separate file for our service worker
 
 ```
-// [serviceworker.js](link)
+// [serviceworker.js](https://github.com/carmalou/fayePI/blob/master/public/serviceworker.js#L1)
 
 self.oninstall = function() {
     caches.open('fayeFrontEndV1').then(function(cache) {
@@ -69,7 +69,7 @@ This is the function that runs when our service worker installs. First, we initi
 Next step is activate:
 
 ```
-// [serviceworker.js](link)
+// [serviceworker.js](https://github.com/carmalou/fayePI/blob/master/public/serviceworker.js#L24)
 
 self.onactivate = function(event) {
     console.log('sw is up and running!');
@@ -81,7 +81,7 @@ This can be a good place for clean up, but we'll save that for another blog post
 We saved the best for last! Let's take a look at fetch.
 
 ```
-// [serviceworker.js](link)
+// [serviceworker.js](https://github.com/carmalou/fayePI/blob/master/public/serviceworker.js#L28)
 
 self.onfetch = function(event) {
     event.respondWith(
@@ -105,4 +105,4 @@ Let's take a closer look at `event.respondWith` and `caches.match`, both of whic
 
 [`caches.match`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/match) is a function that allows us to search through [CacheStorage](link) and find a match for our request. When we add something to our cache, it'll be stored in a stack, with the oldest additions at the bottom and the newest at the top. `caches.match` will find the newest match and return that. If it doesn't find a match at all, it'll return `null`.
 
-And that's it! That's everything you need for a simple starter service worker! If you think service workers are super cool, I'd recommend seeing what else they can do, including background fetch, [in this blog post.](link)
+And that's it! That's everything you need for a simple starter service worker! If you think service workers are super cool, I'd recommend seeing what else they can do, including background fetch, [in this blog post.](https://davidwalsh.name/background-sync)
