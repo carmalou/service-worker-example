@@ -91,8 +91,8 @@ This function will run when the service worker detects a fetch request. This fun
 
 Let's take a closer look at `event.respondWith` and `caches.match`, both of which are pretty service worker specific.
 
-[`event.respondWith`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) is a function which allows you to intercept a fetch request and give your own response instead.
+[`event.respondWith`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith) is a function which allows you to intercept a fetch request and give your own response instead. It's important to use this function instead of simply returning a response because this is what allows your intercepted response to be sent to the correct place.
 
-
+[`caches.match`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/match) is a function that allows us to search through [CacheStorage](link) and find a match for our request. When we add something to our cache, it'll be stored in a stack, with the oldest additions at the bottom and the newest at the top. `caches.match` will find the newest match and return that. If it doesn't find a match at all, it'll return `null`.
 
 # Next steps
